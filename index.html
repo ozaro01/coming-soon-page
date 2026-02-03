@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Coming soon - Our website is under construction. Stay tuned for the launch!">
+    <title>Coming Soon</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #ffffff; /* Changed to White */
+            --color-shadow: #471E00;
+            --color-highlight: #FF6A00;
+            --font-family: 'Inter', sans-serif;
+            --font-size-heading: clamp(2rem, 8vw, 3.875rem);
+            --font-size-body: clamp(0.875rem, 2.5vw, 1.125rem);
+            --animation-duration: 6s;
+            --focal-x: 63.96%;
+            --focal-y: 49.41%;
+            --spacing-sm: 1rem;
+            --spacing-md: 2.5rem;
+        }
+
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 270deg;
+            inherits: false;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--color-shadow);
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .rotating-shadow {
+            position: absolute;
+            inset: 0;
+            background: conic-gradient(from var(--angle) at var(--focal-x) var(--focal-y),
+                    var(--color-shadow) 0deg,
+                    var(--color-highlight) 181deg,
+                    var(--color-shadow) 347deg,
+                    var(--color-shadow) 360deg);
+            animation: rotateShadow var(--animation-duration) linear infinite;
+        }
+
+        @keyframes rotateShadow {
+            from { --angle: 0deg; }
+            to { --angle: 360deg; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: var(--spacing-sm);
+        }
+
+        .logo {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            /* Keeps logo original colors, but if you want the logo white too, 
+               uncomment the line below: */
+            /* filter: brightness(0) invert(1); */
+        }
+
+        .main-content {
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .main-content h1 {
+            color: var(--color-primary);
+            font-family: var(--font-family);
+            font-size: var(--font-size-heading);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .main-content p {
+            color: var(--color-primary);
+            font-family: var(--font-family);
+            font-size: var(--font-size-body);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .social-icons {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--color-primary);
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .social-icon img {
+            width: 20px;
+            height: 20px;
+            /* Force icons to render as White */
+            filter: brightness(0) invert(1);
+        }
+
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            :root { --spacing-md: 1.25rem; }
+            .logo img { height: 30px; }
+            .social-icon { width: 38px; height: 38px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="rotating-shadow" aria-hidden="true"></div>
+
+        <main class="content">
+            <div class="logo">
+                <img src="Ozaro_Logo.svg" alt="Ozaro Logo">
+            </div>
+
+            <div class="main-content">
+                <h1>Coming Soon!</h1>
+                <p>This page is under construction. Launching soon.</p>
+            </div>
+
+            <nav class="social-icons" aria-label="Social media links">
+                <a href="mailto:business@ozaro.in" class="social-icon" aria-label="Email">
+                    <img src="ic_mail.svg" alt="Email Icon">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <img src="ic_linkedin.svg" alt="LinkedIn Icon">
+                </a>
+                <a href="https://www.instagram.com/ozaro.in/" target="_blank" class="social-icon" aria-label="Instagram">
+                    <img src="ic_instagram.svg" alt="Instagram Icon">
+                </a>
+            </nav>
+        </main>
+    </div>
+</body>
+
+</html>
